@@ -58,7 +58,10 @@ export default async function IndustryOpportunitiesPage() {
                                         <Badge variant={opp.status === 'Open' ? 'default' : 'secondary'}>{opp.status}</Badge>
                                         <Badge variant="outline" className="bg-slate-50">{opp.type}</Badge>
                                     </div>
-                                    <form action={deleteOpportunity.bind(null, opp.id)}>
+                                    <form action={async () => {
+                                        "use server"
+                                        await deleteOpportunity(opp.id)
+                                    }}>
                                         <Button variant="ghost" size="icon" className="h-6 w-6 text-slate-400 hover:text-red-500 hover:bg-red-50" type="submit">
                                             <Trash2 className="h-4 w-4" />
                                             <span className="sr-only">Delete</span>

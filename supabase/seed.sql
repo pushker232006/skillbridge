@@ -24,7 +24,13 @@ INSERT INTO assessment_questions (question, skill_id, options, correct_option) V
 ('In React, what hook is used to manage state?', '00000000-0000-0000-0001-000000000002', '["useEffect", "useState", "useContext", "useReducer"]', 1),
 ('Which of the following is NOT a core module in Node.js?', '00000000-0000-0000-0001-000000000003', '["http", "fs", "path", "express"]', 3),
 ('What is the command to initialize a new git repository?', '00000000-0000-0000-0001-000000000007', '["git start", "git init", "git new", "git create"]', 1),
-('In SQL, which clause is used to filter records before grouping?', '00000000-0000-0000-0001-000000000006', '["WHERE", "HAVING", "FILTER", "SORT"]', 0);
+('In SQL, which clause is used to filter records before grouping?', '00000000-0000-0000-0001-000000000006', '["WHERE", "HAVING", "FILTER", "SORT"]', 0),
+('Which of the following is a dynamically typed language?', '00000000-0000-0000-0001-000000000004', '["Java", "C++", "Python", "C#"]', 2),
+('What does AWS stand for?', '00000000-0000-0000-0001-000000000008', '["Amazon Web Server", "Amazon Web Services", "Automated Web Services", "Amazon Wireless Services"]', 1),
+('Which Java keyword is used to inherit a class?', '00000000-0000-0000-0001-000000000005', '["implement", "extends", "inherit", "super"]', 1),
+('What is the primary purpose of a Load Balancer in System Design?', '00000000-0000-0000-0001-000000000009', '["To store files securely", "To route traffic to multiple servers", "To compile code faster", "To handle database schema changes"]', 1),
+('Which hook is used to perform side effects in a functional React component?', '00000000-0000-0000-0001-000000000002', '["useSideEffect", "useEffect", "useAction", "useMemo"]', 1);
+
 
 -- NOTE: To insert into auth.users properly requires hashing the password. 
 -- For a demo environment, we will provide instructions in README to register the users first, 

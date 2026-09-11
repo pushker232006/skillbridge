@@ -23,11 +23,11 @@ import {
 
 const studentNavItems = [
   { name: 'Dashboard', href: '/student/dashboard', icon: LayoutDashboard },
-  { name: 'Skill Assessment', href: '/student/assessment', icon: BrainCircuit },
   { name: 'My Skills', href: '/student/skills', icon: Award },
   { name: 'Opportunities', href: '/student/opportunities', icon: Briefcase },
   { name: 'Applications', href: '/student/applications', icon: FileText },
   { name: 'Learning', href: '/student/learning', icon: BookOpen },
+  { name: 'Skill Assessment', href: '/student/assessment', icon: BrainCircuit },
   { name: 'Portfolio', href: '/student/portfolio', icon: UserCircle },
 ]
 

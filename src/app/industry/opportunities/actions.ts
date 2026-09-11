@@ -95,9 +95,21 @@ export async function deleteOpportunity(opportunityId: string) {
   
     if (!user) return { error: "Unauthorized" }
 
+    // Verify ownership first
+    const { data: opp } = await supabase.from('opportunities').select('id').eq('id', opportunityId).eq('industry_id', user.id).single()
+    
+    if (!opp) {
+        return { error: "Opportunity not found or unauthorized" }
+    }
+
+    // Manually delete related records first in case ON DELETE CASCADE is missing in the database
+    await supabase.from('opportunity_skills').delete().eq('opportunity_id', opportunityId)
+    await supabase.from('applications').delete().eq('opportunity_id', opportunityId)
+
     const { error } = await supabase.from('opportunities').delete().eq('id', opportunityId).eq('industry_id', user.id)
 
     if (error) {
+        console.error("Failed to delete opportunity:", error)
         return { error: error.message }
     }
 

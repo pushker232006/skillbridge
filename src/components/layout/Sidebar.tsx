@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { logout } from '@/app/(auth)/actions'
 import {
   LayoutDashboard,
   BrainCircuit,
@@ -97,7 +98,7 @@ export function Sidebar({ role = 'student' }: { role?: string }) {
             <Settings className="h-4 w-4" />
             Settings
           </Link>
-          <form action="/auth/logout" method="POST">
+          <form action={logout}>
             <button
               type="submit"
               className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-slate-500 transition-all hover:text-slate-900"

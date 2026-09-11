@@ -2,8 +2,9 @@ import { createClient } from '@/lib/supabase/server'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Plus, Users, MapPin, Clock } from 'lucide-react'
+import { Plus, Users, MapPin, Clock, Trash2 } from 'lucide-react'
 import Link from 'next/link'
+import { deleteOpportunity } from './actions'
 
 export default async function IndustryOpportunitiesPage() {
     const supabase = await createClient()
@@ -53,8 +54,19 @@ export default async function IndustryOpportunitiesPage() {
                         <Card key={opp.id} className="flex flex-col">
                             <CardHeader>
                                 <div className="flex justify-between items-start mb-2">
-                                    <Badge variant={opp.status === 'Open' ? 'default' : 'secondary'}>{opp.status}</Badge>
-                                    <Badge variant="outline" className="bg-slate-50">{opp.type}</Badge>
+                                    <div className="flex gap-2">
+                                        <Badge variant={opp.status === 'Open' ? 'default' : 'secondary'}>{opp.status}</Badge>
+                                        <Badge variant="outline" className="bg-slate-50">{opp.type}</Badge>
+                                    </div>
+                                    <form action={async () => {
+                                        "use server"
+                                        await deleteOpportunity(opp.id)
+                                    }}>
+                                        <Button variant="ghost" size="icon" className="h-6 w-6 text-slate-400 hover:text-red-500 hover:bg-red-50" type="submit">
+                                            <Trash2 className="h-4 w-4" />
+                                            <span className="sr-only">Delete</span>
+                                        </Button>
+                                    </form>
                                 </div>
                                 <CardTitle className="text-xl">{opp.title}</CardTitle>
                                 <CardDescription className="text-xs text-slate-400">

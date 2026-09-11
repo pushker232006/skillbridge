@@ -88,3 +88,22 @@ export async function updateApplicationStatus(applicationId: string, newStatus: 
     
     return { success: true }
 }
+
+export async function deleteOpportunity(opportunityId: string) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+  
+    if (!user) return { error: "Unauthorized" }
+
+    const { error } = await supabase.from('opportunities').delete().eq('id', opportunityId).eq('industry_id', user.id)
+
+    if (error) {
+        return { error: error.message }
+    }
+
+    revalidatePath('/industry/opportunities')
+    revalidatePath('/industry/dashboard')
+    
+    return { success: true }
+}
+
